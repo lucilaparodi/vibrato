@@ -1,17 +1,16 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite"
+import react from "@vitejs/plugin-react"
 
 export default defineConfig({
+  base: "", // 👈🏽 esto es lo nuevo y clave
   plugins: [react()],
   server: {
     proxy: {
-      // Cuando la URL comience con '/api',
-      // la petición se redirigirá a https://api.lyrics.ovh
       "/api": {
         target: "https://api.lyrics.ovh",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
-});
+        rewrite: (path) => path.replace(/^\/api/, "")
+      }
+    }
+  }
+})
