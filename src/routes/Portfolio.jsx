@@ -100,18 +100,30 @@ export default function Portfolio() {
   if (columns === 1) {
     const mobileItems = trabajos.slice(0, 6)
     return (
-      <div className="mx-8 mt-32 mb-8">
-        <div className="space-y-8 mb-28">
-          {mobileItems.map((t, i) => (
-            <div
-              key={i}
-              className="box-border border border-peach rounded-lg overflow-hidden aspect-video"
-            >
-              <YouTubeEmbed url={t.link} title={`Trabajo ${i + 1}`} />
+      <>
+        <div className="relative m-auto gradient-background">
+          <div className="w-[95%] max-w-[1700px] m-auto relative z-10">
+            <Header />
+            <h1 className="text-center font-lafleur text-peach text-4xl mt-24 mb-10">
+              Portfolio
+            </h1>
+            <div className="mx-4 mb-28">
+              <div className="grid grid-cols-1 gap-4">
+                {mobileItems.map((t, i) => (
+                  <div
+                    key={i}
+                    className="box-border border border-peach rounded-lg overflow-hidden aspect-video"
+                  >
+                    <YouTubeEmbed url={t.link} title={`Trabajo ${i + 1}`} />
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+            <Footer />
+          </div>
+          <div className="absolute inset-0 grain z-0"></div>
         </div>
-      </div>
+      </>
     )
   }
 
