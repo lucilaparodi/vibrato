@@ -105,8 +105,8 @@ function Modal({ onClose, onSave, chord, onChordChange = () => {} }) {
     }
   }, [selectedModifiers]);
 
-  // Guardar acorde definitivo
-  const handleSave = () => {
+  // Función para construir el acorde final
+  const buildFinalChord = () => {
     const leftMods = selectedModifiers.filter((m) => m !== "/");
     let finalChord = [selectedNote, ...leftMods].join(" ").trim();
 
@@ -116,6 +116,19 @@ function Modal({ onClose, onSave, chord, onChordChange = () => {} }) {
       }`;
     }
 
+    return finalChord;
+  };
+
+  // Guardar acorde definitivo
+  const handleSave = () => {
+    const finalChord = buildFinalChord();
+    onSave(finalChord);
+    onClose();
+  };
+
+  // Cerrar y guardar automáticamente
+  const handleCloseAndSave = () => {
+    const finalChord = buildFinalChord();
     onSave(finalChord);
     onClose();
   };
@@ -134,16 +147,20 @@ function Modal({ onClose, onSave, chord, onChordChange = () => {} }) {
     );
   };
 
-  // Esc to close
+  // Esc to close and save
   useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && onClose();
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        handleCloseAndSave();
+      }
+    };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [selectedNote, selectedModifiers, slashNote, slashModifiers]);
 
   return (
     <div className="z-30">
-      <div className="fixed inset-0 bg-transparent z-30" onClick={onClose} />
+      <div className="fixed inset-0 bg-transparent z-30" onClick={handleCloseAndSave} />
       <div
         className="bg-white p-4 w-64 rounded-2xl shadow-lg relative pointer-events-auto mt-4 z-30"
         onClick={(e) => e.stopPropagation()}

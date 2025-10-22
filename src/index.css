@@ -146,14 +146,12 @@ button:hover {
 
 @media print {
   @page {
-    /* Intenta eliminar márgenes de encabezado/pie del navegador */
-    margin: 0;
+    margin: auto; /* Elimina los márgenes de impresión */
   }
   body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    /* Ajusta el zoom según sea necesario para encajar contenido */
-    zoom: 1.0;
+    zoom: 1.32;
   }
 }
 
