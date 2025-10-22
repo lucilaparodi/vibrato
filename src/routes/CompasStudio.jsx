@@ -213,8 +213,9 @@ export const CompasStudio = () => {
       JSON.stringify({ songTitle, lyrics, compasBlocks })
     );
 
-    // Abrimos una nueva pestaña con la página de impresión
-    window.open("/preview", "_blank");
+    // Abrimos una nueva pestaña con la página de impresión (hash routing)
+    const base = window.location.origin + window.location.pathname;
+    window.open(`${base}#/preview`, "_blank");
   };
   return (
     <>

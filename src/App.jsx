@@ -1,5 +1,5 @@
 import React from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HashRouter, Routes, Route } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 
 import { Home } from "./routes/Home"
@@ -21,7 +21,7 @@ import Portfolio from "./routes/Portfolio"
 function App() {
   return (
     // <GoogleOAuthProvider clientId="TU_CLIENT_ID.apps.googleusercontent.com">
-    <BrowserRouter>
+    <HashRouter>
       <ScrollRestoration />
       <Routes>
         {/* Rutas de tu app */}
@@ -34,7 +34,7 @@ function App() {
         <Route path="/song-studio" element={<CompasStudio />} />
         <Route path="/preview" element={<PreviewPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
     // </GoogleOAuthProvider>
   )
 }
