@@ -14,6 +14,33 @@ export function PreviewPage() {
         console.error("Error al parsear previewData:", err);
       }
     }
+
+    // Configurar estilos globales para impresión
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @page {
+        margin: 0;
+        padding: 0;
+        size: auto;
+      }
+      @media print {
+        body, html {
+          margin: 0;
+          padding: 0;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        .preview-page-container {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
   // Imprime automáticamente cuando los datos y recursos estén listos

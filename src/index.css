@@ -147,11 +147,34 @@ button:hover {
 @media print {
   @page {
     margin: auto; /* Elimina los márgenes de impresión */
+    margin-top: 0;
+    margin-bottom: 0;
   }
   body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     zoom: 1.32;
+  }
+  /* Ocultar header y footer del navegador */
+  @page {
+    @bottom-center {
+      content: none;
+    }
+    @bottom-left {
+      content: none;
+    }
+    @bottom-right {
+      content: none;
+    }
+    @top-center {
+      content: none;
+    }
+    @top-left {
+      content: none;
+    }
+    @top-right {
+      content: none;
+    }
   }
 }
 
