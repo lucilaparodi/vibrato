@@ -20,7 +20,7 @@ export default function ChordsSection({
             <h4 className="font-bold">
               {block.name || ""}
               {block.multiplier && block.multiplier !== "x1"
-                ? ` ${block.multiplier}`
+                ? <span className="opacity-50">{` ${block.multiplier}`}</span>
                 : ""}
             </h4>
 

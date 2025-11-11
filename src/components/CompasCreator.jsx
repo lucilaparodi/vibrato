@@ -6,7 +6,7 @@ import { IonIcon } from "@ionic/react";
 import { trashOutline } from "ionicons/icons";
 import { Button } from "./Button";
 import { addOutline } from "ionicons/icons";
-import Select from "./Select";
+import NumberInput from "./NumberInput";
 
 const CompasCreator = ({
   blockId,
@@ -74,11 +74,12 @@ const CompasCreator = ({
             onChange={handleNameChange}
           />
 
-          {/* Select o dropdown de compases (a tu gusto) */}
+          {/* Input numérico para repeticiones */}
           <div className="flex justify-between gap-4 my-5 md:my-0">
-            <Select
+            <NumberInput
               value={blockData.multiplier}
               onChange={handleMultiplierChange}
+              minValue={1}
             />
 
             {/* Botón para añadir fila (4 compases nuevos por fila) */}

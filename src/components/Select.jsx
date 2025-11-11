@@ -4,7 +4,7 @@ import { IonIcon } from "@ionic/react";
 import { chevronDownOutline } from "ionicons/icons";
 
 export const Select = ({
-  options = ["x1", "x2", "x3", "x4", "x5"],
+  options = ["x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9", "x10"],
   defaultValue = "x1",
   value,
   onChange,
